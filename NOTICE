@@ -1,0 +1,8 @@
+This project is based on code from:
+https://github.com/fradelg/docker-mysql-cron-backup
+
+The original project is licensed under the Apache License 2.0.
+Copyright belongs to the original author(s) at the above repository.
+
+Modifications Copyright (c) 2025 <DaoNguyen>.
+Changes include adding the ability to upload backups to additional R2.
