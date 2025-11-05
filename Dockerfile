@@ -13,7 +13,7 @@ RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -o /go/bin/dockerize .
 
 FROM alpine:3.20.3
-LABEL maintainer "Fco. Javier Delgado del Hoyo <frandelhoyo@gmail.com>"
+LABEL maintainer="Dao Nguyen <daonguyen2941@gmail.com>"
 
 RUN apk add --update \
     tzdata \
@@ -46,4 +46,4 @@ VOLUME ["/backup"]
 HEALTHCHECK --interval=2s --retries=1800 \
     CMD stat /HEALTHY.status || exit 1
 
-CMD dockerize -wait tcp://${MYSQL_HOST}:${MYSQL_PORT} -timeout ${TIMEOUT} /run.sh
+CMD ["sh", "-c", "dockerize -wait tcp://${MYSQL_HOST}:${MYSQL_PORT} -timeout ${TIMEOUT} /run.sh"]
